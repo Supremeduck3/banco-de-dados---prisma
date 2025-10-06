@@ -7,12 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Bruxo {
+model Comida {
   id        Int     @id @default(autoincrement())
   nome      String
   tipo      String
-  preco     Float?
+  preco     Float
   descricao String
 
-  @@map("comidas")
+  @@map("Comidas")
 }
