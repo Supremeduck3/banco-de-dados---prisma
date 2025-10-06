@@ -1,26 +1,17 @@
-const express = require('express');
-const bruxoRoutes = require('./src/routes/bruxoRoutes');
-
+import express from "express";
+import dotenv from "dotenv";
 const app = express();
-const PORT = 3001;
-
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({ 
-    message: '🏰 API de Hogwarts - MVC Edition',
-    endpoints: {
-      listar: 'GET /bruxos',
-      buscar: 'GET /bruxos/:id',
-      criar: 'POST /bruxos',
-      atualizar: 'PUT /bruxos/:id',
-      deletar: 'DELETE /bruxos/:id'
-    }
-  });
+
+dotenv.config();
+const portserver = process.env.PORT || 3001;
+
+app.get ("/", (req, res) => {
+    res.send("O servidor está funcionando ...")
 });
 
-app.use('/bruxos', bruxoRoutes);
 
-app.listen(PORT, () => {
-  console.log(`🪄 API em http://localhost:${PORT}`);
+app.listen(portserver, () => {
+    console.log(`O servidor está rodando em http://localhost:${portserver}`)
 });
